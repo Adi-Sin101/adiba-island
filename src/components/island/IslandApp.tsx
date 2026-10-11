@@ -86,7 +86,7 @@ function Panel({ content }: { content: SiteContent }) {
 /* ------------------------------------------------------------------- HUD */
 
 function Hud({ name }: { name: string }) {
-  const { focus, mode, setMode, overview, open, sound, toggleSound, nearby, panelOpen, step } = useIsland()
+  const { focus, mode, setMode, overview, open, sound, toggleSound, ambience, toggleAmbience, nearby, panelOpen, step } = useIsland()
   const [menu, setMenu] = useState(false)
   const [hint, setHint] = useState(true)
 
@@ -112,9 +112,13 @@ function Hud({ name }: { name: string }) {
             <span aria-hidden>🎮</span>
             <span className="hidden sm:inline">{mode === 'play' ? 'Exit play' : 'Play mode'}</span>
           </button>
-          <button type="button" className={`hud-btn ${sound ? 'hud-btn--on' : 'hud-btn--nudge'}`} onClick={toggleSound} aria-pressed={sound} aria-label={sound ? 'Turn music and sound off' : 'Turn music and sound on'}>
-            <span aria-hidden>{sound ? '🔊' : '🎵'}</span>
-            <span className="hidden sm:inline">{sound ? 'Sound on' : 'Music'}</span>
+          <button type="button" className={`hud-btn ${sound ? 'hud-btn--on' : 'hud-btn--nudge'}`} onClick={toggleSound} aria-pressed={sound} aria-label={sound ? 'Turn music off' : 'Turn music on'}>
+            <span aria-hidden>🎵</span>
+            <span className="hidden lg:inline">{sound ? 'Music on' : 'Music'}</span>
+          </button>
+          <button type="button" className={`hud-btn ${ambience ? 'hud-btn--on' : ''}`} onClick={toggleAmbience} aria-pressed={ambience} aria-label={ambience ? 'Turn beach sounds off' : 'Turn beach sounds on'} title="Beach sounds">
+            <span aria-hidden>🌊</span>
+            <span className="hidden lg:inline">Waves</span>
           </button>
           <Link href="/classic" className="hud-btn" prefetch={false}>
             <span aria-hidden>📜</span>

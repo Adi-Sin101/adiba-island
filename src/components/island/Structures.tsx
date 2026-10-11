@@ -30,7 +30,7 @@ function Hotspot({ id, children, labelY = 3.2 }: { id: ZoneId; children: ReactNo
   const focus = useIsland((s) => s.focus)
   const mode = useIsland((s) => s.mode)
   const nearby = useIsland((s) => s.nearby)
-  const sound = useIsland((s) => s.sound)
+  const sound = useIsland((s) => s.ambience)
   const panelOpen = useIsland((s) => s.panelOpen)
   const active = focus === id || nearby === id
   const showTag = mode === 'tour' && !panelOpen

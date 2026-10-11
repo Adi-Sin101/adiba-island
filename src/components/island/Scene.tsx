@@ -23,7 +23,7 @@ function CameraRig() {
   const panelOpen = useIsland((s) => s.panelOpen)
   const mode = useIsland((s) => s.mode)
   const ready = useIsland((s) => s.ready)
-  const sound = useIsland((s) => s.sound)
+  const sound = useIsland((s) => s.ambience)
   const size = useThree((s) => s.size)
   const portrait = size.width < size.height
   const wide = size.width >= 900

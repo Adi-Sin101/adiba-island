@@ -12,7 +12,10 @@ type IslandState = {
   panelOpen: boolean
   mode: Mode
   ready: boolean
+  /** Background music (the island radio). */
   sound: boolean
+  /** Beach sounds: ocean waves plus click pops. */
+  ambience: boolean
   selectedProject: string | null
   pennyAwake: number
   /** Zone the mascot is standing next to in play mode. */
@@ -25,6 +28,7 @@ type IslandState = {
   setMode: (mode: Mode) => void
   setReady: () => void
   toggleSound: () => void
+  toggleAmbience: () => void
   wakePenny: () => void
   setNearby: (zone: ZoneId | null) => void
   selectProject: (slug: string | null) => void
@@ -36,6 +40,7 @@ export const useIsland = create<IslandState>((set, get) => ({
   mode: 'tour',
   ready: false,
   sound: false,
+  ambience: false,
   selectedProject: null,
   pennyAwake: 0,
   nearby: null,
@@ -55,6 +60,7 @@ export const useIsland = create<IslandState>((set, get) => ({
   setMode: (mode) => set({ mode, panelOpen: false, focus: null, nearby: null }),
   setReady: () => set({ ready: true }),
   toggleSound: () => set((s) => ({ sound: !s.sound })),
+  toggleAmbience: () => set((s) => ({ ambience: !s.ambience })),
   wakePenny: () => set({ pennyAwake: Date.now() }),
   setNearby: (zone) => (get().nearby === zone ? undefined : set({ nearby: zone })),
   selectProject: (slug) => set({ selectedProject: slug }),

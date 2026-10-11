@@ -24,12 +24,13 @@ function loadYouTube() {
 }
 
 /**
- * Island radio: when the visitor turns sound on, soft waves start and the chosen song plays
- * quietly. YouTube songs play through the official embedded player (shown as a little toy
+ * Island radio: the 🎵 toggle plays the chosen song quietly; the separate 🌊 toggle adds soft
+ * ocean waves. YouTube songs play through the official embedded player (shown as a little toy
  * radio, as YouTube requires the player to stay visible); uploaded files use <audio>.
  */
 export function Radio({ radio }: { radio: RadioData }) {
   const sound = useIsland((s) => s.sound)
+  const ambience = useIsland((s) => s.ambience)
   const toggleSound = useIsland((s) => s.toggleSound)
   const mount = useRef<HTMLDivElement>(null)
   const audioEl = useRef<HTMLAudioElement>(null)
@@ -37,10 +38,10 @@ export function Radio({ radio }: { radio: RadioData }) {
   const useYouTube = playing && !radio.audioUrl && Boolean(radio.youtubeId)
 
   useEffect(() => {
-    if (!sound || !radio.waves) return
+    if (!ambience || !radio.waves) return
     startWaves(0.045)
     return () => stopWaves()
-  }, [sound, radio.waves])
+  }, [ambience, radio.waves])
 
   useEffect(() => {
     const el = audioEl.current
@@ -96,7 +97,7 @@ export function Radio({ radio }: { radio: RadioData }) {
               <p className="radio__title" title={radio.title}>
                 📻 {radio.title || 'Island radio'}
               </p>
-              <button type="button" className="radio__btn" onClick={toggleSound} aria-label="Turn sound off">
+              <button type="button" className="radio__btn" onClick={toggleSound} aria-label="Turn music off">
                 ✕
               </button>
             </div>

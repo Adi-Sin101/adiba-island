@@ -39,7 +39,7 @@ export function Boop() {
   const legs = useRef<THREE.Group>(null)
   const armR = useRef<THREE.Group>(null)
   const mode = useIsland((s) => s.mode)
-  const sound = useIsland((s) => s.sound)
+  const sound = useIsland((s) => s.ambience)
   const [line, setLine] = useState<string | null>(null)
 
   useEffect(() => {
@@ -202,7 +202,7 @@ export function Boop() {
 export function PennyHammock({ position }: { position: [number, number, number] }) {
   const open = useIsland((s) => s.open)
   const awakeAt = useIsland((s) => s.pennyAwake)
-  const sound = useIsland((s) => s.sound)
+  const sound = useIsland((s) => s.ambience)
   const cat = useRef<THREE.Group>(null)
   const head = useRef<THREE.Group>(null)
   const sling = useRef<THREE.Group>(null)
