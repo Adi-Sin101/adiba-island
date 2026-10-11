@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit",
     "sync:github": "cross-env NODE_OPTIONS=--no-deprecation payload run scripts/sync-github.ts",
     "admin:password": "cross-env NODE_OPTIONS=--no-deprecation payload run scripts/set-admin-password.ts",
-    "vercel-build": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && npm run build",
+    "vercel-build": "node scripts/check-env.mjs && cross-env NODE_OPTIONS=--no-deprecation payload migrate && npm run build",
     "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create"
   },
   "dependencies": {
