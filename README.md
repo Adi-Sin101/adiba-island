@@ -60,10 +60,12 @@ Log in at `/admin`. The dashboard has shortcuts for everything:
    - `NEXT_PUBLIC_SITE_URL`: e.g. `https://adiba-island.vercel.app`
    - `GITHUB_TOKEN`: fine-grained token with read-only *Metadata* + *Contents* on your repos (for the Sync button)
    - optional `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
-6. **Deploy.** Then seed production once from your computer, pointing at Neon and Blob:
+6. **Deploy.** Then seed production once from your computer: put the live `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN` in `.env.production.local` (gitignored) and run:
    ```bash
-   DATABASE_URL="<neon url>" BLOB_READ_WRITE_TOKEN="<blob token>" SEED_ADMIN_PASSWORD="<your password>" npm run seed
+   npm run seed:prod      # wipes and reloads the starter content: only for the first fill!
    ```
+   Redeploy afterwards so the static pages are rebuilt with content.
+   The Blob store must have **public** access (the Payload Blob adapter does not support private stores).
 7. Open `https://<your-site>/admin`, log in, and change the password if you used a temporary one.
 
 When you later change collections or fields: run `npm run migrate:create <name>` locally, commit the new file in `src/migrations`, and push. Vercel applies it on the next deploy.
