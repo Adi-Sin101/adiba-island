@@ -22,6 +22,7 @@ import { Users } from './collections/Users'
 import { githubSyncEndpoint } from './endpoints/githubSync'
 import { Penny } from './globals/Penny'
 import { Profile } from './globals/Profile'
+import { Radio } from './globals/Radio'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -55,7 +56,7 @@ export default buildConfig({
     Media,
     Users,
   ],
-  globals: [Profile, Penny],
+  globals: [Profile, Penny, Radio],
   endpoints: [githubSyncEndpoint],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

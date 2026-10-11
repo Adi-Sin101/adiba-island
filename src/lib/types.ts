@@ -142,6 +142,15 @@ export type TimelineItem = {
   link?: string
 }
 
+export type RadioData = {
+  enabled: boolean
+  title: string
+  youtubeId: string | null
+  audioUrl: string | null
+  volume: number
+  waves: boolean
+}
+
 export type SiteContent = {
   profile: ProfileData
   penny: PennyData
@@ -155,4 +164,5 @@ export type SiteContent = {
   food: FoodEntry[]
   posts: PostCard[]
   timeline: TimelineItem[]
+  radio: RadioData
 }

@@ -39,3 +39,52 @@ export function playWhoosh() {
   osc.start()
   osc.stop(ac.currentTime + 0.32)
 }
+
+// Soft ocean ambience: filtered noise whose loudness rises and falls like waves.
+let waves: { stop: () => void } | null = null
+
+export function startWaves(volume = 0.05) {
+  const ac = audio()
+  if (!ac || waves) return
+  const length = ac.sampleRate * 4
+  const buffer = ac.createBuffer(1, length, ac.sampleRate)
+  const data = buffer.getChannelData(0)
+  let last = 0
+  for (let i = 0; i < length; i++) {
+    // brown noise: smoother and deeper than white noise
+    last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02
+    data[i] = last * 3.5
+  }
+  const source = ac.createBufferSource()
+  source.buffer = buffer
+  source.loop = true
+  const filter = ac.createBiquadFilter()
+  filter.type = 'lowpass'
+  filter.frequency.value = 650
+  const gain = ac.createGain()
+  gain.gain.value = 0
+  gain.gain.linearRampToValueAtTime(volume, ac.currentTime + 2)
+  // slow swell, roughly one wave every 7 seconds
+  const lfo = ac.createOscillator()
+  lfo.frequency.value = 0.14
+  const lfoDepth = ac.createGain()
+  lfoDepth.gain.value = volume * 0.6
+  lfo.connect(lfoDepth).connect(gain.gain)
+  source.connect(filter).connect(gain).connect(ac.destination)
+  source.start()
+  lfo.start()
+  waves = {
+    stop: () => {
+      gain.gain.cancelScheduledValues(ac.currentTime)
+      gain.gain.setValueAtTime(gain.gain.value, ac.currentTime)
+      gain.gain.linearRampToValueAtTime(0, ac.currentTime + 0.8)
+      source.stop(ac.currentTime + 0.9)
+      lfo.stop(ac.currentTime + 0.9)
+    },
+  }
+}
+
+export function stopWaves() {
+  waves?.stop()
+  waves = null
+}

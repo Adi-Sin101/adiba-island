@@ -152,7 +152,14 @@ export const places: {
     files: ['photo-16.jpg'],
     story: 'Sat right in the spray. No regrets, very wet.',
   },
-  { name: 'Seaside skies', files: ['photo-02.jpg'], story: 'Blue patterns, bluer horizon.' },
+  {
+    name: 'Seaside skies',
+    location: 'Cox’s Bazar',
+    lat: 21.4272,
+    lng: 92.0058,
+    files: ['photo-02.jpg'],
+    story: 'Blue patterns, bluer horizon, on the world’s longest natural sea beach.',
+  },
   {
     name: 'Forest cottage stay',
     location: 'Chitra Resort, Narail',

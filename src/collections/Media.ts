@@ -14,7 +14,7 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    mimeTypes: ['image/*', 'application/pdf', 'video/mp4', 'video/webm'],
+    mimeTypes: ['image/*', 'application/pdf', 'video/mp4', 'video/webm', 'audio/*'],
     focalPoint: true,
     imageSizes: [
       {

@@ -10,6 +10,7 @@ import type { SiteContent } from '@/lib/types'
 import { htmlLayer } from './Html'
 import { Joystick } from './Joystick'
 import { Loader } from './Loader'
+import { Radio } from './Radio'
 import { live, useIsland } from './store'
 import { ZONES, zoneById } from './zones'
 
@@ -111,8 +112,9 @@ function Hud({ name }: { name: string }) {
             <span aria-hidden>🎮</span>
             <span className="hidden sm:inline">{mode === 'play' ? 'Exit play' : 'Play mode'}</span>
           </button>
-          <button type="button" className={`hud-btn ${sound ? 'hud-btn--on' : ''}`} onClick={toggleSound} aria-pressed={sound} aria-label="Toggle sound effects">
-            <span aria-hidden>{sound ? '🔊' : '🔈'}</span>
+          <button type="button" className={`hud-btn ${sound ? 'hud-btn--on' : 'hud-btn--nudge'}`} onClick={toggleSound} aria-pressed={sound} aria-label={sound ? 'Turn music and sound off' : 'Turn music and sound on'}>
+            <span aria-hidden>{sound ? '🔊' : '🎵'}</span>
+            <span className="hidden sm:inline">{sound ? 'Sound on' : 'Music'}</span>
           </button>
           <Link href="/classic" className="hud-btn" prefetch={false}>
             <span aria-hidden>📜</span>
@@ -284,6 +286,7 @@ export function IslandApp({ content }: { content: SiteContent }) {
       {ready && (
         <>
           <Hud name={content.profile.name} />
+          <Radio radio={content.radio} />
           <Panel content={content} />
         </>
       )}

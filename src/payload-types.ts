@@ -112,10 +112,12 @@ export interface Config {
   globals: {
     profile: Profile;
     penny: Penny;
+    radio: Radio;
   };
   globalsSelect: {
     profile: ProfileSelect<false> | ProfileSelect<true>;
     penny: PennySelect<false> | PennySelect<true>;
+    radio: RadioSelect<false> | RadioSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1189,6 +1191,35 @@ export interface Penny {
   createdAt?: string | null;
 }
 /**
+ * Background music that starts when a visitor taps the 🔈 sound button. Use an official YouTube video (licensed playback) or upload an audio file you have the rights to.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio".
+ */
+export interface Radio {
+  id: number;
+  enabled?: boolean | null;
+  title?: string | null;
+  /**
+   * Link to the official video. Plays in a small radio player on the island.
+   */
+  youtubeUrl?: string | null;
+  /**
+   * Optional. If set, this file plays instead of the YouTube video.
+   */
+  audio?: (number | null) | Media;
+  /**
+   * 1–100. Keep it low and relaxing.
+   */
+  volume?: number | null;
+  /**
+   * Soft ocean-wave ambience under the music.
+   */
+  waves?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "profile_select".
  */
@@ -1263,6 +1294,21 @@ export interface PennySelect<T extends boolean = true> {
         id?: T;
       };
   photos?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio_select".
+ */
+export interface RadioSelect<T extends boolean = true> {
+  enabled?: T;
+  title?: T;
+  youtubeUrl?: T;
+  audio?: T;
+  volume?: T;
+  waves?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -28,6 +28,15 @@ export function toImg(m: unknown): Img | null {
   }
 }
 
+const DEFAULT_SONG = 'https://www.youtube.com/watch?v=cKs83ZQxYKA'
+
+/** Accepts watch, youtu.be, embed and shorts links (or a bare 11-character id). */
+function youtubeId(url?: string | null) {
+  if (!url) return null
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) ?? url.match(/^([\w-]{11})$/)
+  return m ? m[1] : null
+}
+
 const imgs = (list: unknown) => (Array.isArray(list) ? list.map(toImg).filter((x): x is Img => x !== null) : [])
 
 const visible = { visible: { not_equals: false } } as const
@@ -36,7 +45,7 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
   const payload = await getPayload({ config })
   const all = { depth: 1, limit: 200, pagination: false } as const
 
-  const [profile, penny, projects, publications, experiences, achievements, skills, looks, places, food, posts, milestones] =
+  const [profile, penny, projects, publications, experiences, achievements, skills, looks, places, food, posts, milestones, radio] =
     await Promise.all([
       payload.findGlobal({ slug: 'profile', depth: 1 }),
       payload.findGlobal({ slug: 'penny', depth: 1 }),
@@ -56,9 +65,19 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
         limit: 50,
       }),
       payload.find({ collection: 'milestones', where: visible, sort: 'date', ...all }),
+      payload.findGlobal({ slug: 'radio', depth: 1 }),
     ])
 
   const base: Omit<SiteContent, 'timeline'> = {
+    radio: {
+      enabled: radio.enabled !== false,
+      title: radio.title === undefined ? 'Dard-e-Disco · Om Shanti Om' : str(radio.title),
+      // fall back to the default song until the Radio settings are saved once in the admin
+      youtubeId: youtubeId(radio.youtubeUrl === undefined ? DEFAULT_SONG : radio.youtubeUrl),
+      audioUrl: toImg(radio.audio)?.url ?? null,
+      volume: Math.min(100, Math.max(1, radio.volume ?? 15)),
+      waves: radio.waves !== false,
+    },
     profile: {
       name: str(profile.name) || 'Adiba Tahsin',
       nickname: str(profile.nickname),

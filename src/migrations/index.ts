@@ -1,6 +1,7 @@
 import * as migration_20261010_235921_initial from './20261010_235921_initial';
 import * as migration_20261011_001437_blob_fields from './20261011_001437_blob_fields';
 import * as migration_20261011_003010_place_location from './20261011_003010_place_location';
+import * as migration_20261011_004330_radio from './20261011_004330_radio';
 
 export const migrations = [
   {
@@ -16,6 +17,11 @@ export const migrations = [
   {
     up: migration_20261011_003010_place_location.up,
     down: migration_20261011_003010_place_location.down,
-    name: '20261011_003010_place_location'
+    name: '20261011_003010_place_location',
+  },
+  {
+    up: migration_20261011_004330_radio.up,
+    down: migration_20261011_004330_radio.down,
+    name: '20261011_004330_radio'
   },
 ];
