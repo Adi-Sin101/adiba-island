@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adiba Tahsin – CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:      #1B2A4A;
+    --blue:      #2055A8;
+    --blue-lt:   #EBF2FF;
+    --blue-bd:   #C7D8F5;
+    --text:      #1F2937;
+    --muted:     #6B7280;
+    --border:    #D1D5DB;
+    --side-bg:   #F3F6FB;
+    --gold:      #D97706;
+  }
+
+  html, body {
+    width: 210mm;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9pt;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ══ HEADER ══ */
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 22px 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .header-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.32);
+    object-fit: cover;
+    object-position: top center;
+    flex-shrink: 0;
+  }
+  .header-text { flex: 1; }
+  .header-name {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 23pt;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.05;
+    color: #fff;
+  }
+  .header-title {
+    font-size: 8.8pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    margin-top: 3px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+  .header-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 18px;
+    margin-top: 7px;
+  }
+  .header-contact span {
+    font-size: 8.2pt;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .header-contact a { color: rgba(255,255,255,0.92); text-decoration: none; }
+  .header-contact a:hover { text-decoration: underline; }
+
+  /* ══ BODY COLUMNS ══ */
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .top-layout {
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* ══ MAIN — left 63% ══ */
+  .main {
+    flex: 0 0 63%;
+    padding: 12px 15px 12px 22px;
+    border-right: 1px solid var(--border);
+  }
+
+  /* ══ SIDEBAR — right 37% ══ */
+  .sidebar {
+    flex: 0 0 37%;
+    padding: 12px 20px 12px 15px;
+    background: var(--side-bg);
+  }
+
+  .experience-section {
+    padding: 10px 22px 12px 22px;
+  }
+
+  .experience-section .section-title {
+    margin-top: 0;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 18px;
+  }
+
+  .experience-grid .exp-item {
+    margin-bottom: 0;
+  }
+
+  /* ══ SECTION TITLES ══ */
+  .section-title {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--blue);
+    border-bottom: 1.8px solid var(--blue);
+    padding-bottom: 2px;
+    margin-bottom: 7px;
+    margin-top: 11px;
+  }
+  .section-title:first-child, .sidebar .section-title:first-child { margin-top: 0; }
+
+  /* ══ PROFILE ══ */
+  .profile-text {
+    font-size: 8.7pt;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* ══ PROJECTS ══ */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+  }
+  .project-item { padding: 4px 0; }
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1px;
+  }
+  .project-name {
+    font-weight: 600;
+    font-size: 8.8pt;
+    color: var(--navy);
+  }
+  .project-tech {
+    font-size: 7.6pt;
+    color: var(--blue);
+    font-weight: 500;
+  }
+  .project-link {
+    display: block;
+    font-size: 7.3pt;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 2px;
+  }
+  .project-link:hover { color: var(--blue); text-decoration: underline; }
+  .project-desc {
+    font-size: 8.2pt;
+    color: var(--muted);
+    line-height: 1.42;
+  }
+  .project-features {
+    margin-top: 3px;
+    list-style: none;
+    padding: 0;
+  }
+  .project-features li {
+    font-size: 7.9pt;
+    color: var(--muted);
+    padding-left: 10px;
+    position: relative;
+    line-height: 1.38;
+  }
+  .project-features li::before {
+    content: "\25B8";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 7pt;
+    top: 1px;
+  }
+
+  /* ══ EXPERIENCE ══ */
+  .exp-item { margin-bottom: 7px; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  .exp-role {
+    font-weight: 600;
+    font-size: 8.8pt;
+    color: var(--navy);
+  }
+  .exp-date {
+    font-size: 7.8pt;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .exp-org {
+    font-size: 8.2pt;
+    color: var(--blue);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+  .exp-desc {
+    font-size: 8.2pt;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.45;
+  }
+
+  /* ══ EDUCATION ══ */
+  .edu-item { margin-bottom: 8px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-degree {
+    font-weight: 600;
+    font-size: 8.7pt;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 8.2pt;
+    color: var(--text);
+    margin-top: 1px;
+  }
+  .edu-meta {
+    font-size: 7.8pt;
+    color: var(--blue);
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  /* ══ SKILLS TAGS ══ */
+  .skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 5px;
+  }
+  .skill-tag {
+    background: var(--blue-lt);
+    color: var(--navy);
+    font-size: 7.8pt;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 0.8px solid var(--blue-bd);
+  }
+
+  /* ══ TOOLS ══ */
+  .tools-text {
+    font-size: 8.5pt;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* ══ SOFT SKILLS ══ */
+  .soft-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 5px;
+  }
+  .soft-tag {
+    font-size: 8.2pt;
+    color: var(--text);
+    background: #fff;
+    border: 0.8px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  /* ══ LANGUAGES ══ */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8.5pt;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .lang-level { color: var(--muted); font-size: 8pt; }
+
+  /* ══ ACHIEVEMENTS ══ */
+  .ach-list { list-style: none; padding: 0; }
+  .ach-list li {
+    font-size: 8.4pt;
+    color: var(--text);
+    padding-left: 13px;
+    position: relative;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .ach-list li::before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 7.5pt;
+    top: 1px;
+  }
+
+  /* ══ PRINT ══ */
+  @media print {
+    html, body { width: 210mm; }
+    .page { min-height: 297mm; }
+    .header {
+      background: #fff;
+      color: #000;
+      border-bottom: 1px solid #000;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .header-name,
+    .header-title,
+    .header-contact span,
+    .header-contact a {
+      color: #000 !important;
+    }
+    .header-photo {
+      border-color: #000;
+    }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="header">
+  <img class="header-photo" src="adiba.jpeg" alt="Adiba Tahsin">
+  <div class="header-text">
+    <div class="header-name">Adiba Tahsin</div>
+    <div class="header-title">CSE Undergraduate &nbsp;·&nbsp; Full-Stack Developer &nbsp;·&nbsp; Research Fellow &nbsp;·&nbsp; Tech Event Organiser</div>
+    <div class="header-contact">
+      <span>&#9993;&nbsp;<a href="mailto:adiba0tahsin@gmail.com">adiba0tahsin@gmail.com</a></span>
+      <span>&#128222;&nbsp;+880 1882 083192</span>
+      <span>&#128279;&nbsp;<a href="https://linkedin.com/in/adiba-tahsin-985b452a2" target="_blank">linkedin.com/in/adiba-tahsin-985b452a2</a></span>
+      <span>&#128279;&nbsp;<a href="https://github.com/Adi-Sin101" target="_blank">github.com/Adi-Sin101</a></span>
+      <span>&#128205;&nbsp;Khulna, Bangladesh</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ BODY ══════════════ -->
+<div class="body">
+
+<div class="top-layout">
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         MAIN COLUMN         ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<main class="main">
+
+  <!-- PROFILE -->
+  <div class="section-title">Profile</div>
+  <p class="profile-text">
+    Passionate final year Computer Science student at KUET specialising in full-stack web development, AI-assisted systems, and workflow automation. Experienced across PHP/MERN/FastAPI backends, Android, and React Native, with growing focus on building practical tools that streamline repeated tasks and improve decision-making. Recognised research contributor to a Netherlands Embassy-commissioned STEM impact study and active event organiser for TEDxKUET. Committed to building production-grade, maintainable software with automation-friendly design.
+  </p>
+
+  <!-- PROJECTS -->
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+
+    <!-- Medora -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Medora</span>
+        <span class="project-tech">Next.js &middot; FastAPI &middot; Supabase &middot; AI</span>
+      </div>
+      <a class="project-link" href="https://github.com/CSE-3200-System-Project/Medora" target="_blank">github.com/CSE-3200-System-Project/Medora</a>
+      <p class="project-desc">Production-grade AI-native healthcare platform for Bangladesh — unifying patient records, verified doctor workflows, safety-first clinical AI, and OCR prescription parsing into one end-to-end digital care system. 26 route modules, 194 handlers, 41 SQLAlchemy models, role-based consent-aware access control.</p>
+    </div>
+
+    <!-- EmotionScript -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">EmotionScript Compiler</span>
+        <span class="project-tech">Flex &middot; Bison &middot; C</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/EmotionScript-Complier-Project-Using-Flex-Bison" target="_blank">github.com/Adi-Sin101/EmotionScript-Complier-Project</a>
+      <p class="project-desc">Custom programming language compiler emphasising human-centric, emotional programming paradigms.</p>
+      <ul class="project-features">
+        <li>Emotion-based keywords; types: count, measure, truth, words, emotion, level</li>
+        <li>Control flow: if_feel, ruminate loops; functions via interpret/yields</li>
+        <li>OOP via persona classes; trig &amp; math operations built-in</li>
+      </ul>
+    </div>
+
+    <!-- CareerConnectDB -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">CareerConnectDB</span>
+        <span class="project-tech">PHP &middot; MySQL</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/CareerConnectDB" target="_blank">github.com/Adi-Sin101/CareerConnectDB</a>
+      <p class="project-desc">Career management &amp; job portal with user auth, admin panel, CRUD operations, and data-driven dashboards for employers and job seekers.</p>
+    </div>
+
+    <!-- SkillSwap -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">SkillSwap</span>
+        <span class="project-tech">MERN Stack</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/webdev_skillswap" target="_blank">github.com/Adi-Sin101/webdev_skillswap</a>
+      <p class="project-desc">Campus skill-exchange platform — React, Tailwind, Express, Node.js &amp; MongoDB with full CRUD and REST APIs.</p>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Portfolio Website</span>
+        <span class="project-tech">HTML &middot; CSS &middot; JS &middot; ASP.NET</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/my-portfolio" target="_blank">github.com/Adi-Sin101/my-portfolio</a>
+      <p class="project-desc">Personal portfolio with integrated ASP.NET admin panel, responsive UI, and dynamic content management.</p>
+    </div>
+
+    <!-- PawPal -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">PawPal</span>
+        <span class="project-tech">Java &middot; Firebase &middot; Android</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/PawPal_Android" target="_blank">github.com/Adi-Sin101/PawPal_Android</a>
+      <p class="project-desc">Pet care &amp; routine tracking Android app with Firebase backend, vet contacts, reminders, and user authentication.</p>
+    </div>
+
+    <!-- Campus Complaint -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Campus Complaint App</span>
+        <span class="project-tech">React Native (Prototype)</span>
+      </div>
+      <p class="project-desc">Cross-platform prototype for campus complaint management — role-based dashboards, status tracking, push notifications.</p>
+    </div>
+
+    <!-- Fitness Tracker -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Fitness Tracker</span>
+        <span class="project-tech">C++ &middot; OOP</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/Fitness-Tracking-System" target="_blank">github.com/Adi-Sin101/Fitness-Tracking-System</a>
+      <p class="project-desc">Calorie intake calculator, weight goal tracker, exercise suggester &amp; BMI calculator. Demonstrates encapsulation and modular OOP design.</p>
+    </div>
+
+    <!-- Company Management -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Company Management System</span>
+        <span class="project-tech">C++ &middot; OOP</span>
+      </div>
+      <a class="project-link" href="https://github.com/Adi-Sin101/Company_Management_System" target="_blank">github.com/Adi-Sin101/Company_Management_System</a>
+      <p class="project-desc">OOP-based company operations manager with data abstraction, file handling, and modular class design.</p>
+    </div>
+
+    <!-- ParaBounce -->
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">ParaBounce</span>
+        <span class="project-tech">Next.js &middot; Projectile Motion Simulator</span>
+      </div>
+      <a class="project-link" href="https://github.com/Kuet-Kobe-Khulbe/ParaBounce--Projectile-Motion-Simulation" target="_blank">github.com/Kuet-Kobe-Khulbe/ParaBounce--Projectile-Motion-Simulation</a>
+      <p class="project-desc">Projectile motion simulator built with Next.js that visualises motion dynamics and interactive simulation behavior. Placed 2nd Runner-Up at the ILM AI Hackathon.</p>
+    </div>
+
+  </div><!-- /projects-grid -->
+
+</main>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         SIDEBAR             ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<aside class="sidebar">
+
+  <!-- EDUCATION -->
+  <div class="section-title">Education</div>
+
+  <div class="edu-item">
+    <div class="edu-degree">B.Sc. in Computer Science &amp; Engineering</div>
+    <div class="edu-school">Khulna University of Engineering &amp; Technology (KUET)</div>
+    <div class="edu-meta">Expected 2027 &nbsp;&middot;&nbsp; CGPA: 3.37 / 4.00</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-degree">Higher Secondary Certificate (HSC)</div>
+    <div class="edu-school">Khulna Govt. Girls&#39; College, Khulna</div>
+    <div class="edu-meta">2021 &nbsp;&middot;&nbsp; GPA: 5.00 / 5.00</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-degree">Secondary School Certificate (SSC)</div>
+    <div class="edu-school">Govt. Coronation Secondary Girls&#39; School, Khulna</div>
+    <div class="edu-meta">2019 &nbsp;&middot;&nbsp; GPA: 5.00 / 5.00</div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-wrap">
+    <span class="skill-tag">PHP</span>
+    <span class="skill-tag">MySQL</span>
+    <span class="skill-tag">React</span>
+    <span class="skill-tag">Next.js</span>
+    <span class="skill-tag">Node.js</span>
+    <span class="skill-tag">Express.js</span>
+    <span class="skill-tag">MongoDB</span>
+    <span class="skill-tag">FastAPI</span>
+    <span class="skill-tag">Supabase</span>
+    <span class="skill-tag">ASP.NET</span>
+    <span class="skill-tag">Java (Android)</span>
+    <span class="skill-tag">Tailwind CSS</span>
+    <span class="skill-tag">Firebase</span>
+    <span class="skill-tag">Git &amp; GitHub</span>
+    <span class="skill-tag">Excel (Adv.)</span>
+    <span class="skill-tag">C++ (OOP)</span>
+    <span class="skill-tag">Flex / Bison</span>
+    <span class="skill-tag">React Native</span>
+    <span class="skill-tag">AI Automation</span>
+    <span class="skill-tag">LLM Integration</span>
+    <span class="skill-tag">API Integration</span>
+    <span class="skill-tag">Workflow Design</span>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="section-title">Tools &amp; Environment</div>
+  <p class="tools-text">VS Code &nbsp;&middot;&nbsp; Figma &nbsp;&middot;&nbsp; Postman<br>XAMPP &nbsp;&middot;&nbsp; Chrome DevTools &nbsp;&middot;&nbsp; Android Studio<br>Alembic &nbsp;&middot;&nbsp; SQLAlchemy &nbsp;&middot;&nbsp; GitHub Actions &nbsp;&middot;&nbsp; AI Coding Assistants</p>
+
+  <!-- SOFT SKILLS -->
+  <div class="section-title">Soft Skills</div>
+  <div class="soft-wrap">
+    <span class="soft-tag">Communication</span>
+    <span class="soft-tag">Teamwork</span>
+    <span class="soft-tag">Problem Solving</span>
+    <span class="soft-tag">Time Management</span>
+    <span class="soft-tag">Adaptability</span>
+    <span class="soft-tag">Event Management</span>
+    <span class="soft-tag">Content Creation</span>
+    <span class="soft-tag">Process Thinking</span>
+    <span class="soft-tag">Automation Mindset</span>
+    <span class="soft-tag">Research &amp; Analysis</span>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="section-title">Languages</div>
+  <div class="lang-item"><span>Bengali</span><span class="lang-level">Native</span></div>
+  <div class="lang-item"><span>English</span><span class="lang-level">Professional</span></div>
+
+  <!-- ACHIEVEMENTS — utilises lower sidebar space -->
+  <div class="section-title">Achievements</div>
+  <ul class="ach-list">
+    <li>2nd Place / Runner-Up &mdash; ILM AI Hackathon (ParaBounce Projectile Motion Simulator)</li>
+    <li>3rd Runner-Up &mdash; Case Crack 2.0 (KBEC)</li>
+    <li>4th Place &mdash; Spark Fusion 2K21 (Hardware Design Competition)</li>
+    <li>Participant &mdash; Intra KUET Programming Contest (IKPC) 2K23</li>
+  </ul>
+
+</aside>
+</div><!-- /top-layout -->
+
+<!-- EXPERIENCE -->
+<section class="experience-section">
+  <div class="section-title">Experience &amp; Leadership</div>
+  <div class="experience-grid">
+
+    <!-- Logarithm Studio -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Software Engineer</span>
+        <span class="exp-date">2026 – Present</span>
+      </div>
+      <div class="exp-org">Logarithm Studio</div>
+      <p class="exp-desc">Working on mobile app and JavaScript development, contributing to product features, UI implementation, and iterative delivery.</p>
+    </div>
+
+    <!-- TEDxKUET -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Co-organizer</span>
+        <span class="exp-date">May 2026</span>
+      </div>
+      <div class="exp-org">TEDxKUET</div>
+      <p class="exp-desc">Led end-to-end marketing campaigns and content strategy for the official event. Produced and hosted promotional social media reels, managed guest relations and speaker coordination, and designed the post-event audience questionnaire for structured feedback and impact assessment.</p>
+    </div>
+
+    <!-- Joint Secretary -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Joint Secretary</span>
+        <span class="exp-date">2024 – Present</span>
+      </div>
+      <div class="exp-org">KUET Business &amp; Entrepreneurship Club (KBEC)</div>
+      <p class="exp-desc">Leads operational planning for club events and workshops; coordinates logistics, communications, and member onboarding.</p>
+    </div>
+
+    <!-- Netherlands -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Research Fellow — SheSTEM Year 2 Impact Study</span>
+        <span class="exp-date">2025</span>
+      </div>
+      <div class="exp-org">Embassy of the Kingdom of the Netherlands (Commissioned Project)</div>
+      <p class="exp-desc">Recognised for valuable contribution to a Netherlands Embassy-commissioned study. Compiled qualitative interview notes from student participants, capturing insights on STEM skills, confidence, and career interest.</p>
+    </div>
+
+    <!-- She-STEM -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Campus Ambassador</span>
+        <span class="exp-date">2025 – Present</span>
+      </div>
+      <div class="exp-org">She-STEM @ KUET</div>
+      <p class="exp-desc">Promotes female participation in STEM through event organisation, peer engagement, and institutional communications.</p>
+    </div>
+
+    <!-- Hult Prize -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Volunteer</span>
+        <span class="exp-date">2024</span>
+      </div>
+      <div class="exp-org">Hult Prize KUET 2024</div>
+      <p class="exp-desc">Event coordination &amp; logistics support across all stages of the competition.</p>
+    </div>
+
+  </div>
+</section>
+</div><!-- /body -->
+</div><!-- /page -->
+</body>
+</html>

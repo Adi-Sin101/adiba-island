@@ -1,0 +1,128 @@
+// Island-flavoured touches for the admin dashboard.
+:root {
+  --theme-success-500: #2a6bf2;
+  --adiba-blue: #2a6bf2;
+  --adiba-pink: #ff7eb6;
+  --adiba-sun: #ffd23f;
+  --adiba-ink: #1d1b3a;
+}
+
+.adiba-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: system-ui, sans-serif;
+
+  &__badge {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  strong {
+    display: block;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+  }
+
+  small {
+    display: block;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+  }
+}
+
+.adiba-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.adiba-welcome {
+  margin-bottom: 32px;
+
+  &__hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 28px;
+    border-radius: 24px;
+    border: 3px solid var(--adiba-ink);
+    box-shadow: 6px 6px 0 var(--adiba-ink);
+    background: linear-gradient(120deg, #bfe3ff, #ffd6ea 60%, #fff3b8);
+    color: var(--adiba-ink);
+
+    h2 {
+      margin: 0 0 4px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__visit {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--adiba-ink);
+    color: #fff !important;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 2px solid var(--theme-elevation-150);
+    background: var(--theme-elevation-50);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      transform: translateY(-3px) rotate(-1deg);
+      box-shadow: 4px 4px 0 var(--adiba-pink);
+    }
+
+    small {
+      opacity: 0.6;
+    }
+  }
+
+  &__emoji {
+    font-size: 28px;
+  }
+}
+
+.adiba-sync {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px dashed var(--adiba-blue);
+  background: color-mix(in srgb, var(--adiba-blue) 8%, transparent);
+
+  p {
+    margin: 2px 0 0;
+    opacity: 0.7;
+  }
+
+  .btn {
+    margin: 0;
+  }
+}
