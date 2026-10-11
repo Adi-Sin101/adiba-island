@@ -125,6 +125,14 @@ export function Travel({ places }: { places: Place[] }) {
       <ul className="space-y-4">
         {shown.map((p, i) => (
           <motion.li key={p.id} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="toy-card overflow-hidden sm:flex">
+            {!p.photos[0] && (
+              <div
+                className="grid aspect-[4/3] shrink-0 place-items-center border-b-[3px] border-ink bg-[repeating-linear-gradient(45deg,#dff6f7_0_14px,#f3fbfc_14px_28px)] text-6xl sm:aspect-auto sm:w-48 sm:border-b-0 sm:border-r-[3px]"
+                aria-hidden
+              >
+                {p.status === 'bucket' ? '✈️' : '🧳'}
+              </div>
+            )}
             {p.photos[0] && (
               <button type="button" onClick={() => setViewer({ place: p.id, index: 0 })} className="block aspect-[4/3] shrink-0 overflow-hidden border-b-[3px] border-ink sm:aspect-auto sm:w-48 sm:border-b-0 sm:border-r-[3px]">
                 <Photo img={p.photos[0]} variant="card" sizes="(max-width: 640px) 90vw, 200px" className="transition-transform duration-500 hover:scale-105" />

@@ -120,6 +120,8 @@ export const looks: { file: string; title: string; vibe: string }[] = [
 // lat/lng puts a pin on the Travel Dock globe. Locations without coordinates stay off the globe.
 export const places: {
   name: string
+  status?: 'visited' | 'bucket'
+  country?: string
   location?: string
   lat?: number
   lng?: number
@@ -151,7 +153,14 @@ export const places: {
     story: 'Sat right in the spray. No regrets, very wet.',
   },
   { name: 'Seaside skies', files: ['photo-02.jpg'], story: 'Blue patterns, bluer horizon.' },
-  { name: 'Forest cottage stay', files: ['photo-07.jpg'], story: 'Wooden cottages in the trees.' },
+  {
+    name: 'Forest cottage stay',
+    location: 'Chitra Resort, Narail',
+    lat: 23.16,
+    lng: 89.5,
+    files: ['photo-07.jpg'],
+    story: 'Wooden cottages in the trees.',
+  },
   {
     name: 'Countryside trail',
     location: 'Sundarbans Mangrove Forest',
@@ -160,6 +169,20 @@ export const places: {
     files: ['photo-06.jpg'],
     story: 'Sunglasses on, map off, deep in the world’s largest mangrove forest.',
   },
+  {
+    name: 'Pink in the mangroves',
+    location: 'Sundarbans Mangrove Forest',
+    lat: 21.95,
+    lng: 89.6,
+    files: ['photo-00.jpg'],
+    story: 'Gingham dress, driftwood throne, mangroves for a backdrop.',
+  },
+  // bucket list: pins show up in yellow on the globe
+  { name: 'Pattaya', status: 'bucket', country: 'Thailand', location: 'Pattaya, Thailand', lat: 12.9236, lng: 100.8825, files: [], story: 'Beaches, night markets and island hopping.' },
+  { name: 'Vietnam', status: 'bucket', country: 'Vietnam', location: 'Vietnam', lat: 16.0544, lng: 108.2022, files: [], story: 'Street food, lantern towns and limestone bays.' },
+  { name: 'Maldives', status: 'bucket', country: 'Maldives', location: 'Maldives', lat: 3.2028, lng: 73.2207, files: [], story: 'Turquoise water and overwater villas.' },
+  { name: 'Clubs & beach rave parties of Europe', status: 'bucket', country: 'Europe', location: 'Europe', lat: 38.9067, lng: 1.4206, files: [], story: 'Dancing till sunrise on Europe’s party coasts.' },
+  { name: 'Famous Australian beaches', status: 'bucket', country: 'Australia', location: 'Australia', lat: -33.8915, lng: 151.2767, files: [], story: 'Surf, sand and the most iconic beaches down under.' },
 ]
 
 export const food = [

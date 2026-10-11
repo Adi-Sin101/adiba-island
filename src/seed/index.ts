@@ -148,7 +148,17 @@ async function seed() {
     for (const file of place.files) photos.push(await upload(payload, file, `Adiba at ${place.name}`))
     await payload.create({
       collection: 'places',
-      data: { name: place.name, location: place.location, lat: place.lat, lng: place.lng, story: place.story, photos, order: i },
+      data: {
+        name: place.name,
+        status: place.status ?? 'visited',
+        country: place.country ?? 'Bangladesh',
+        location: place.location,
+        lat: place.lat,
+        lng: place.lng,
+        story: place.story,
+        photos,
+        order: i,
+      },
     })
   }
   for (const [i, dish] of data.food.entries()) {
