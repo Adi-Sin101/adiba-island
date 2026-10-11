@@ -67,8 +67,10 @@ export default buildConfig({
   sharp,
   plugins: [
     // Uploads go to Vercel Blob in production; locally they stay on disk.
+    // alwaysInsertFields keeps the database schema identical with or without the token.
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      alwaysInsertFields: true,
       collections: { media: true },
       token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
