@@ -146,7 +146,10 @@ async function seed() {
   for (const [i, place] of data.places.entries()) {
     const photos: number[] = []
     for (const file of place.files) photos.push(await upload(payload, file, `Adiba at ${place.name}`))
-    await payload.create({ collection: 'places', data: { name: place.name, story: place.story, photos, order: i } })
+    await payload.create({
+      collection: 'places',
+      data: { name: place.name, location: place.location, lat: place.lat, lng: place.lng, story: place.story, photos, order: i },
+    })
   }
   for (const [i, dish] of data.food.entries()) {
     await payload.create({ collection: 'food', data: { ...dish, kind: dish.kind as never, status: 'wishlist', order: i } })

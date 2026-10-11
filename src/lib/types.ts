@@ -93,6 +93,7 @@ export type Look = { id: string; title: string; vibe: string; caption: string; p
 export type Place = {
   id: string
   name: string
+  location: string
   country: string
   status: string
   lat?: number

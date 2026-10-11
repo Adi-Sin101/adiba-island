@@ -248,6 +248,7 @@ export interface Media {
    * Short description for screen readers.
    */
   alt: string;
+  prefix?: string | null;
   _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -526,6 +527,10 @@ export interface Look {
 export interface Place {
   id: number;
   name: string;
+  /**
+   * e.g. "Ratargul Swamp Forest, Sylhet"
+   */
+  location?: string | null;
   country?: string | null;
   status?: ('visited' | 'bucket') | null;
   lat?: number | null;
@@ -918,6 +923,7 @@ export interface LooksSelect<T extends boolean = true> {
  */
 export interface PlacesSelect<T extends boolean = true> {
   name?: T;
+  location?: T;
   country?: T;
   status?: T;
   lat?: T;
@@ -963,6 +969,7 @@ export interface MessagesSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;

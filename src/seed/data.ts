@@ -117,14 +117,49 @@ export const looks: { file: string; title: string; vibe: string }[] = [
   { file: 'photo-18.jpg', title: 'Café hopping', vibe: 'casual' },
 ]
 
-// Locations are left for Adiba to fill in from the admin (lat/lng puts a pin on the globe).
-export const places: { name: string; files: string[]; story: string }[] = [
-  { name: 'Tea garden trails', files: ['photo-05.jpg'], story: 'Rolling green tea hills and a well-earned hat break.' },
-  { name: 'River boat ride', files: ['photo-09.jpg'], story: 'Straw hat, slow river, zero network. Perfect.' },
-  { name: 'Waterfall splash', files: ['photo-16.jpg'], story: 'Sat right in the spray. No regrets, very wet.' },
+// lat/lng puts a pin on the Travel Dock globe. Locations without coordinates stay off the globe.
+export const places: {
+  name: string
+  location?: string
+  lat?: number
+  lng?: number
+  files: string[]
+  story: string
+}[] = [
+  {
+    name: 'Tea garden trails',
+    location: 'Malnicherra Tea Estate, Sylhet',
+    lat: 24.9265,
+    lng: 91.8856,
+    files: ['photo-05.jpg'],
+    story: 'Rolling green tea hills and a well-earned hat break.',
+  },
+  {
+    name: 'River boat ride',
+    location: 'Ratargul Swamp Forest, Sylhet',
+    lat: 25.0103,
+    lng: 91.969,
+    files: ['photo-09.jpg'],
+    story: 'Straw hat, slow water, trees growing right out of the river. Zero network. Perfect.',
+  },
+  {
+    name: 'Waterfall splash',
+    location: 'Sitakunda, Chittagong',
+    lat: 22.6305,
+    lng: 91.68,
+    files: ['photo-16.jpg'],
+    story: 'Sat right in the spray. No regrets, very wet.',
+  },
   { name: 'Seaside skies', files: ['photo-02.jpg'], story: 'Blue patterns, bluer horizon.' },
   { name: 'Forest cottage stay', files: ['photo-07.jpg'], story: 'Wooden cottages in the trees.' },
-  { name: 'Countryside trail', files: ['photo-06.jpg'], story: 'Sunglasses on, map off.' },
+  {
+    name: 'Countryside trail',
+    location: 'Sundarbans Mangrove Forest',
+    lat: 22.0,
+    lng: 89.55,
+    files: ['photo-06.jpg'],
+    story: 'Sunglasses on, map off, deep in the world’s largest mangrove forest.',
+  },
 ]
 
 export const food = [

@@ -132,6 +132,7 @@ export function Travel({ places }: { places: Place[] }) {
             )}
             <div className="p-4">
               <h3 className="font-display text-xl leading-tight text-ink">{p.name}</h3>
+              {p.location && <p className="text-sm font-bold text-blue">📍 {p.location}</p>}
               <p className="text-sm text-ink/60">{[p.country, p.when].filter(Boolean).join(' · ')}</p>
               {p.story && <p className="mt-2 text-ink/80">{p.story}</p>}
               {p.photos.length > 1 && <Pill className="mt-3">📸 {p.photos.length} photos</Pill>}

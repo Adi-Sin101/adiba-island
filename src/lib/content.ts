@@ -168,6 +168,7 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
     places: places.docs.map((p) => ({
       id: String(p.id),
       name: p.name,
+      location: str(p.location),
       country: str(p.country),
       status: str(p.status),
       lat: p.lat ?? undefined,

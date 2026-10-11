@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   // drei <Html> overlays log noisy double-unmount errors under StrictMode in development
   reactStrictMode: false,
   images: {
+    // Payload already generates resized WebP variants (thumb/card/large); serve them as-is
+    // instead of re-optimising on Vercel, which rejected these API-served images.
+    unoptimized: true,
     remotePatterns: [{ protocol: 'https', hostname: '*.public.blob.vercel-storage.com' }],
     localPatterns: [
       {

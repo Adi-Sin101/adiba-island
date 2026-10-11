@@ -21,6 +21,7 @@ export const Places: CollectionConfig = {
       type: 'row',
       fields: [
         { name: 'name', type: 'text', required: true },
+        { name: 'location', type: 'text', admin: { description: 'e.g. "Ratargul Swamp Forest, Sylhet"' } },
         { name: 'country', type: 'text', defaultValue: 'Bangladesh' },
         {
           name: 'status',
